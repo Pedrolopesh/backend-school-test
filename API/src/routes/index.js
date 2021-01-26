@@ -18,6 +18,7 @@ router.route('/create/student').post(StudentController.create);
 router.route('/findAll/students').get(StudentController.findAllSutends);
 router.route('/find/student/:id').get(StudentController.findById);
 router.route('/findbyName/student').get(StudentController.findByName);
+router.route('/calc/average').get(StudentController.calcAverage);
 
 router.route('/create/question').post(QuestController.create);
 router.route('/answer/question').patch(QuestController.studentAnswer);

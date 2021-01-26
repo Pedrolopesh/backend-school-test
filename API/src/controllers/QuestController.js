@@ -5,7 +5,7 @@ const Test = require('../database/models/Test');
 const registerStudentPoints = require('../services/points')
 
 const { checkStudentidAtTest } = require('../services/TestServices')
-const { checkAlredyAnswer, checkStudentAnwer } = require('../services/QuestServices')
+const { checkAlredyAnswer, checkStudentAnswer } = require('../services/QuestServices')
 
 module.exports = {
     async create(req, res){
@@ -18,14 +18,9 @@ module.exports = {
             })
         }
 
-        const test = await Test.findOne({_id: test_id})
+        const test = await Test.findById({_id: test_id})
         if(test == null){
-            
-            return res.status(400).send({
-                success: false,
-                message: 'Test not found'
-            })
-            
+            return res.status(400).send({ success: false, message: 'Test not found' })
         }else{
             const newQuest = new Quest({
                 name,
@@ -40,7 +35,7 @@ module.exports = {
                 
                 let test_id = test._id
                 let updatedTest = await Test.findByIdAndUpdate(test_id, {
-                    $push: { questions: doc._id }
+                    $push: { question_id: doc._id }
                 }).catch(err => { return res.status(400).send({success: false, error: err}) })
                 
                 if(updatedTest != ''){ return res.status(201).send({ success: true, message: "success to create Question", doc: doc }) }
@@ -86,7 +81,7 @@ module.exports = {
             .then(async doc =>{
 
                 // CHECK STUDENT ANSWER IS CORRECT
-                let answersCorrect = await checkStudentAnwer(student_id, quest_id)
+                let answersCorrect = await checkStudentAnswer(student_answer, quest_id)
                 console.log(answersCorrect)
                 if(answersCorrect){
                     // REGISTER STUDENT 

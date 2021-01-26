@@ -16,21 +16,14 @@ module.exports = {
 
     },
 
-    async checkStudentAnwer(student_id, quest_id) {
-        if(!student_id){
-            return 'error student_id is empty'
+    async checkStudentAnswer(student_answer, quest_id) {
+        if(!student_answer){
+            return 'error student_answer is empty'
         }else{
     
             let macthPoint = await Quest.findById({ _id: quest_id }).select('+correct_answer')
-            let newArray = []
-            
-            newArray.push(macthPoint)
-            let filtered = await newArray[0].student_answer.filter((item) => { return item.student_id == student_id })
-            
-            if(filtered == null || filtered == '')
-                return false
     
-            else if(filtered[0].option == macthPoint.correct_answer)
+            if(student_answer == macthPoint.correct_answer)
                 return true
             else
                 return false
