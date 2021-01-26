@@ -4,7 +4,7 @@ const Test = require('../database/models/Test');
 
 const registerStudentPoints = require('../services/points')
 
-const { checkStudentidAtTest } = require('../services/TestServices')
+const { updateStudentTest } = require('../services/TestServices')
 const { checkAlredyAnswer, checkStudentAnwer } = require('../services/QuestServices')
 
 module.exports = {
@@ -75,31 +75,34 @@ module.exports = {
             let alredyAnswer = await checkAlredyAnswer(student_id, quest_id)
             if(alredyAnswer){return res.status(400).send({ success: false, message: "Student alerdy answer this question" })}
             
+            //REGISTER POINTS AT TEST
+            let updatedTest = await updateStudentTest(student_answer, student_id, quest_id, test_id)
+            if(updatedTest != ''){return res.status(400).send({ success: false, doc:updatedTest })}
             
-            // REGISTER STUDENT ANSWER
-            let newStudent_answer = { option: student_answer, student_id:student._id }
-            // console.log(newStudent_answer)
+            // // REGISTER STUDENT ANSWER
+            // let newStudent_answer = { option: student_answer, student_id:student._id }
+            // // console.log(newStudent_answer)
 
-            Quest.findByIdAndUpdate(quest_id, {
-                $push: { student_answer: newStudent_answer, student_id:student._id}
-            })
-            .then(async doc =>{
+            // Quest.findByIdAndUpdate(quest_id, {
+            //     $push: { student_answer: newStudent_answer, student_id:student._id}
+            // })
+            // .then(async doc =>{
 
-                // CHECK STUDENT ANSWER IS CORRECT
-                let answersCorrect = await checkStudentAnwer(student_id, quest_id)
-                console.log(answersCorrect)
-                if(answersCorrect){
-                    // REGISTER STUDENT 
-                    let registerPoints =  await registerStudentPoints(student_id)
-                    res.status(201).send({ success: true,message: "student's right answer", doc: registerPoints })
-                }
-                else if(!answersCorrect)
-                    return res.status(200).send({ success: true, message: "student's wrong answer", doc: doc})
+            //     // CHECK STUDENT ANSWER IS CORRECT
+            //     let answersCorrect = await checkStudentAnwer(student_id, quest_id)
+            //     console.log(answersCorrect)
+            //     if(answersCorrect){
+            //         // REGISTER STUDENT 
+            //         let registerPoints =  await registerStudentPoints(student_id)
+            //         res.status(201).send({ success: true,message: "student's right answer", doc: registerPoints })
+            //     }
+            //     else if(!answersCorrect)
+            //         return res.status(200).send({ success: true, message: "student's wrong answer", doc: doc})
 
-            })
-            .catch(err => {
-                return res.status(400).send(err)
-            })
+            // })
+            // .catch(err => {
+            //     return res.status(400).send(err)
+            // })
 
         }
     },

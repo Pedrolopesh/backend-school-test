@@ -35,6 +35,20 @@ module.exports = {
             else
                 return false
         }
+    },
+
+    async checkTestAnswer(student_answer, quest_id) {
+        if(!student_answer){
+            return 'error student_answer is empty'
+        }else{
+    
+            let macthPoint = await Quest.findById({ _id: quest_id }).select('+correct_answer')
+    
+            if(student_answer == macthPoint.correct_answer)
+                return true
+            else
+                return false
+        }
     }
     
 }

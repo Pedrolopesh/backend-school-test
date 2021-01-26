@@ -9,10 +9,14 @@ const request = chai.request("http://localhost:3333")
 
 const expect = chai.expect
 
+// QUEST 1 = 60103cfd04ad8d0120c99c97
+// QUEST 2 = 60103d1304ad8d0120c99c98
+
 const globalConfig = {
-    student_id:'600f8ccc03a9775458cabcef',
-    test_id:'600f8cf9b26a493c90aa769d',
-    quest_id:'600f92bfbdb2550a9c2151d4',
+    student_id:'60103bbf59acee267c653473',
+    test_id:'60103bff2d88d2131821a3db',
+    quest_id:'60103cfd04ad8d0120c99c97',
+    studentName:'Unit Test Student numeber: 31'
 }
 
 const testConfig = {
@@ -37,7 +41,7 @@ const testConfig = {
         quest_id:globalConfig.quest_id,
         student_id:globalConfig.student_id,
         test_id:globalConfig.test_id,
-        student_answer:"A"
+        student_answer:"B"
     }
 
 }
@@ -61,38 +65,48 @@ const testConfig = {
 // })
 
 
-// describe('Tests for Student model', function(){
-//     it('Must create student', function(done){
-//         request.post('/api/create/student')
-//             .send({ name: testConfig.studentName})
-//             .end( function(err, resp){
-//             console.log(resp.body)
-//             expect(resp.body.success).to.equals(true);
-//             done();
-//         })
-//     })
+describe('Tests for Student model', function(){
+    // it('Must create student', function(done){
+    //     request.post('/api/create/student')
+    //         .send({ name: testConfig.studentName})
+    //         .end( function(err, resp){
+    //         console.log(resp.body)
+    //         expect(resp.body.success).to.equals(true);
+    //         done();
+    //     })
+    // })
 
-//     // it('Should get all created Students', function(done){
-//     //     request.get('/api/findAll/students')   
-//     //         .end( function(err, resp){
-//     //         console.log(resp.body)
-//     //         expect(resp.body.success).to.equals(true);
-//     //         done();
-//     //     })
-//     // })
+    // it('Should get all created Students', function(done){
+    //     request.get('/api/findAll/students')   
+    //         .end( function(err, resp){
+    //         console.log(resp.body)
+    //         expect(resp.body.success).to.equals(true);
+    //         done();
+    //     })
+    // })
 
-// })
+    // it('Should calculate Student avarage', function(done){
+    //     request.get(`/api/calc/average?student_name=${globalConfig.studentName}&test_id=${globalConfig.student_id}`)
+    //         .end( function(err, resp){
+    //         console.log(resp.body)
+    //         expect(resp.body).not.to.be.undefined;
+    //         // expect(resp.body.success).to.equals(true);
+    //         done();
+    //     })
+    // })
+
+})
 
 describe('Tests for Test model', function(){
-    it('Should create Test', function(done){
-        request.post('/api/create/test')
-            .send({ name: testConfig.testName, student_id: globalConfig.student_id})
-            .end( function(err, resp){
-            console.log(resp.body)
-            expect(resp.body.success).to.equals(true);
-            done();
-        })
-    })
+    // it('Should create Test', function(done){
+    //     request.post('/api/create/test')
+    //         .send({ name: testConfig.testName, student_id: globalConfig.student_id})
+    //         .end( function(err, resp){
+    //         console.log(resp.body)
+    //         expect(resp.body.success).to.equals(true);
+    //         done();
+    //     })
+    // })
 
     // it('Should get all created tested', function(done){
     //     request.get('/api/findAll/tests')
@@ -124,46 +138,46 @@ describe('Tests for Test model', function(){
 })
 
 
-// describe('Tests for Quest model', function(){
+describe('Tests for Quest model', function(){
 
-//     // it('Should create question', function(done){
-//     //     let body = testConfig.questionBodyRequest
-//     //     request.post('/api/create/question')
-//     //         .send(body)
-//     //         .end( function(err, resp){
-//     //         console.log(resp.body)
-//     //         expect(resp.body.success).to.equals(true);
-//     //         done();
-//     //     })
-//     // })
+    // it('Should create question', function(done){
+    //     let body = testConfig.questionBodyRequest
+    //     request.post('/api/create/question')
+    //         .send(body)
+    //         .end( function(err, resp){
+    //         console.log(resp.body)
+    //         expect(resp.body.success).to.equals(true);
+    //         done();
+    //     })
+    // })
 
-//     it('Should answer a question', function(done){
-//         let body = testConfig.answerQuestionBodyRequest
-//         request.patch('/api/answer/question')
-//             .send(body)
-//             .end( function(err, resp){
-//             console.log(resp.body)
-//             // console.log(err)
-//             expect(resp.body).not.to.be.undefined;
-//             done();
-//         })
-//     })
+    it('Should answer a question', function(done){
+        let body = testConfig.answerQuestionBodyRequest
+        request.patch('/api/answer/question')
+            .send(body)
+            .end( function(err, resp){
+            console.log(resp.body)
+            // console.log(err)
+            expect(resp.body).not.to.be.undefined;
+            done();
+        })
+    })
 
-//     // it('Should get all created Questions', function(done){
-//     //     request.get('/api/findAll/questions')   
-//     //         .end( function(err, resp){
-//     //         console.log(resp.body)
-//     //         expect(resp.body.success).to.equals(true);
-//     //         done();
-//     //     })
-//     // })
+    // it('Should get all created Questions', function(done){
+    //     request.get('/api/findAll/questions')   
+    //         .end( function(err, resp){
+    //         console.log(resp.body)
+    //         expect(resp.body.success).to.equals(true);
+    //         done();
+    //     })
+    // })
 
-//     // it('Should get one Question', function(done){
-//     //     request.get(`/api/find/question/${globalConfig.quest_id}`)   
-//     //         .end( function(err, resp){
-//     //         console.log(resp.body)
-//     //         expect(resp.body.success).to.equals(true);
-//     //         done();
-//     //     })
-//     // })
-// })
+    // it('Should get one Question', function(done){
+    //     request.get(`/api/find/question/${globalConfig.quest_id}`)   
+    //         .end( function(err, resp){
+    //         console.log(resp.body)
+    //         expect(resp.body.success).to.equals(true);
+    //         done();
+    //     })
+    // })
+})

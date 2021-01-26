@@ -1,4 +1,5 @@
 const Student = require('../database/models/Student');
+const { findStudentByName, calculateStudentAverage } = require('../services/StudentServices');
 
 module.exports = {
     async create(req, res){
@@ -6,10 +7,7 @@ module.exports = {
         const { name } = req.body
         
         if(!name){
-            return res.status(400).send({
-                success: false,
-                message: 'Please fill in all fields'
-            })
+            return res.status(400).send({ success: false, message: 'Please fill in all fields' })
         }
 
         const student = await Student.findOne({name: name})
@@ -78,6 +76,20 @@ module.exports = {
             if (err) return res.send(err)
             return res.send({ success: true, doc:docs })
         })
+    },
+
+    async calcAverage(req, res){
+        const { student_name, test_id } = req.query;
+
+        if(!student_name || !test_id){
+            return res.status(400).send({ success: false, message: 'Please fill in all fields' })
+        }
+
+        let studentQueryResult = await findStudentByName(student_name)
+        if(studentQueryResult == ''){ return res.status(400).send({ success: false, doc: studentQueryResult }) }
+
+        let calcAvarageResult = await calculateStudentAverage(studentQueryResult);
+        return res.status(200).send(calcAvarageResult);
     }
 
 }

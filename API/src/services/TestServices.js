@@ -1,7 +1,7 @@
 const Quest = require('../database/models/Quest');
 const Student = require('../database/models/Student');
 const Test = require('../database/models/Test');
-
+const { checkTestAnswer } = require('./QuestServices')
 module.exports= {
     async checkStudentidAtTest(student_id, test_id){
         ////SEACRH TO CHECK IF THE STUDENT ALREDY DONE THIS TEST
@@ -46,5 +46,31 @@ module.exports= {
             
             return { update_data: updatedStudent,updatedTest }
         }
+    },
+
+    async updateStudentTest(student_answer, student_id, quest_id, test_id){
+        let questQuery = await Quest.findById({ _id: quest_id }).select('+correct_answer')
+        console.log(questQuery.correct_answer)
+
+        
+        let points = []
+
+        let answersCorrect = await checkTestAnswer(student_answer, quest_id)
+        if(!answersCorrect){ console.log("wrong: win 0")}
+        else { points.push(1) }
+
+        let newStudentTestData = {
+            quest_id: quest_id,
+            student_id: student_id,
+            student_answer: student_answer,
+            correct_answer: questQuery.correct_answer,
+            points: points
+        }
+
+        let studenTestQuesry = await Test.findOne({ student_id: student_id})
+        
+        // const student = await Test.findByIdAndUpdate(test_id,{ $push: { points: "1" } })
+
+        return studenTestQuesry
     }
 }

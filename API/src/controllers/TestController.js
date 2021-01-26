@@ -45,5 +45,5 @@ module.exports = {
             if (err) return res.send({success: false, error:err})
             else res.send({ success: true, doc:doc })
         })
-    }
+    },
 }

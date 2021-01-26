@@ -14,7 +14,7 @@ const StudentSchema = new mongoose.Schema({
     }],
 
     points:{
-        type: Number,
+        type: Array,
         require: true,
     },
 
