@@ -123,15 +123,15 @@ describe('Tests for Test model', function(){
     //     })
     // })
 
-    it('Should calculate Student avarage', function(done){
-        request.get(`/api/calc/average?student_name=${globalConfig.studentName}&test_id=${globalConfig.student_id}`)
-            .end( function(err, resp){
-            console.log(resp.body)
-            expect(resp.body).not.to.be.undefined;
-            // expect(resp.body.success).to.equals(true);
-            done();
-        })
-    })
+    // it('Should calculate Student avarage', function(done){
+    //     request.get(`/api/calc/average?student_name=${globalConfig.studentName}&test_id=${globalConfig.student_id}`)
+    //         .end( function(err, resp){
+    //         console.log(resp.body)
+    //         expect(resp.body).not.to.be.undefined;
+    //         // expect(resp.body.success).to.equals(true);
+    //         done();
+    //     })
+    // })
 })
 
 
