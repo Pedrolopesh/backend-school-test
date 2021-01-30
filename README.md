@@ -60,9 +60,9 @@ http://localhost:3333/api/index
 Desc: Confere se servidor está inciado.
 
 ## ========================================================================
+<br>
+<br>
 
-
-## ========================================================================
 POST
 /create/student
 
@@ -75,9 +75,9 @@ body = {
 Desc: Adiciona usuário ao banco de dados.
 
 ## ========================================================================
+<br>
+<br>
 
-
-## ========================================================================
 GET
 /findAll/student
 
@@ -86,7 +86,8 @@ http://localhost:3333/api/find/student/:id
 Desc: Encontrar um estudande
 
 ## ========================================================================
-
+<br>
+<br>
 GET
 /find/student?params
 
@@ -95,10 +96,8 @@ http://localhost:3333/api/find/student?name=name
 Desc: Encontrar estudande por parametro de nome
 
 ## ========================================================================
-
-
-## ========================================================================
-
+<br>
+<br>
 GET
 /calc/average?params
 
@@ -107,10 +106,8 @@ http://localhost:3333/api/calc/average?student_name=:id&test_id=:id
 Desc: Calcula média do Estudante
 
 ## ========================================================================
-
-
-## ========================================================================
-
+<br>
+<br>
 POST
 /create/test
 
@@ -124,9 +121,8 @@ body = {
 Desc: Cadastrar Teste
 
 ## ========================================================================
-
-
-## ========================================================================
+<br>
+<br>
 
 GET
 /findAll/tests
@@ -136,9 +132,8 @@ http://localhost:3333/api/findAll/tests
 Desc: Encontre todos os testes cadastrados
 
 ## ========================================================================
-
-
-## ========================================================================
+<br>
+<br>
 
 GET
 /find/test/:id
@@ -148,9 +143,8 @@ http://localhost:3333/api/find/test/:id
 Desc: Encontrar um Teste por id
 
 ## ========================================================================
-
-
-## ========================================================================
+<br>
+<br>
 
 POST
 /create/question
@@ -176,9 +170,8 @@ body =
 Desc: Cria Pergunta que é vinculada a um teste quando enviado test_id
 
 ## ========================================================================
-
-
-## ========================================================================
+<br>
+<br>
 
 PACTH
 /answer/question
@@ -194,9 +187,8 @@ Desc: Registra resposta do estudande que respondeu a pergunta e vincula ao estud
 
 
 ## ========================================================================
-
-
-## ========================================================================
+<br>
+<br>
 
 GET
 /findAll/questions
@@ -206,16 +198,15 @@ http://localhost:3333/api/findAll/questions
 Desc: Busca por todas as questões.
 
 ## ========================================================================
+<br>
+<br>
 
-
-## ========================================================================
-
-GET
+<h2 style="color: red;">GET</h2>
 /find/question/:id
 
 http:localhost:3333/api/find/question/:id
 
 
 Desc: Encontrar uma questão por id
-
-## ========================================================================
+<br>
+<br>
