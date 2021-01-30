@@ -51,7 +51,7 @@ Existem validações para os endpoints que precisam atender a maneira certa de e
 
 
 
-## ========================================================================
+##
 GET
 /index
 
@@ -59,7 +59,7 @@ http://localhost:3333/api/index
 
 Desc: Confere se servidor está inciado.
 
-## ========================================================================
+##
 <br>
 <br>
 
@@ -74,7 +74,7 @@ body = {
 
 Desc: Adiciona usuário ao banco de dados.
 
-## ========================================================================
+##
 <br>
 <br>
 
@@ -85,7 +85,7 @@ http://localhost:3333/api/find/student/:id
 
 Desc: Encontrar um estudande
 
-## ========================================================================
+##
 <br>
 <br>
 GET
@@ -95,7 +95,7 @@ http://localhost:3333/api/find/student?name=name
 
 Desc: Encontrar estudande por parametro de nome
 
-## ========================================================================
+##
 <br>
 <br>
 GET
@@ -105,7 +105,7 @@ http://localhost:3333/api/calc/average?student_name=:id&test_id=:id
 
 Desc: Calcula média do Estudante
 
-## ========================================================================
+##
 <br>
 <br>
 POST
@@ -120,7 +120,7 @@ body = {
 
 Desc: Cadastrar Teste
 
-## ========================================================================
+##
 <br>
 <br>
 
@@ -131,7 +131,7 @@ http://localhost:3333/api/findAll/tests
 
 Desc: Encontre todos os testes cadastrados
 
-## ========================================================================
+##
 <br>
 <br>
 
@@ -142,7 +142,7 @@ http://localhost:3333/api/find/test/:id
 
 Desc: Encontrar um Teste por id
 
-## ========================================================================
+##
 <br>
 <br>
 
@@ -169,7 +169,7 @@ body =
 
 Desc: Cria Pergunta que é vinculada a um teste quando enviado test_id
 
-## ========================================================================
+##
 <br>
 <br>
 
@@ -186,7 +186,7 @@ body = {
 Desc: Registra resposta do estudande que respondeu a pergunta e vincula ao estudante, ao teste e a questão a resposta a questão em si.
 
 
-## ========================================================================
+##
 <br>
 <br>
 
@@ -197,7 +197,7 @@ http://localhost:3333/api/findAll/questions
 
 Desc: Busca por todas as questões.
 
-## ========================================================================
+##
 <br>
 <br>
 
