@@ -6,7 +6,7 @@ const StudentController = require('../controllers/StudentController')
 router.route('/create/student').post(StudentController.create);
 router.route('/findAll/students').get(StudentController.findAllSutends);
 router.route('/find/student/:id').get(StudentController.findById);
-router.route('/findbyName/student').get(StudentController.findByName);
+router.route('/find/student').get(StudentController.findByName);
 router.route('/calc/average').get(StudentController.calcAverage);
 
 
