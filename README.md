@@ -21,7 +21,9 @@ There are validations at the request that must atend the rigth way to the reques
 ## Error Codes
 401 as error to save data 400 as error to find some data
 
-## ========================================================================
+<br>
+<br>
+<br>
 
 # Português
 
