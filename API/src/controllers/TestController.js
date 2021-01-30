@@ -18,7 +18,6 @@ module.exports = {
             await newTest.save()
             .then(async doc =>{
                 let studentLink = await checkStudentLink(student_id, doc)
-                console.log(studentLink);
                 if(studentLink != '') return res.status(201).send({ success: true, message:"success to create test", doc: studentLink })
                 else return res.status(401).send({ success: false, message:"error on create Test" })
             })

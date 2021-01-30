@@ -73,7 +73,6 @@ module.exports = {
             
             // REGISTER STUDENT ANSWER
             let newStudent_answer = { option: student_answer, student_id:student._id }
-            // console.log(newStudent_answer)
 
             Quest.findByIdAndUpdate(quest_id, {
                 $push: { student_answer: newStudent_answer, student_id:student._id}
@@ -82,7 +81,6 @@ module.exports = {
 
                 // CHECK STUDENT ANSWER IS CORRECT
                 let answersCorrect = await checkStudentAnswer(student_answer, quest_id)
-                console.log(answersCorrect)
                 if(answersCorrect){
                     // REGISTER STUDENT 
                     let registerPoints =  await registerStudentPoints(student_id)
@@ -112,7 +110,6 @@ module.exports = {
         Quest.findById(id, function (err, doc) {
 
             if (err) {
-                console.log(err)
                 return res.send({ success: false, error: err })
             }
             return res.send({ success: true, doc:doc })

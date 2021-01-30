@@ -36,8 +36,6 @@ module.exports = {
                 student: student
             })
         }
-        // // const testFindResult = Test.findById(id)
-        // // console.log(testFindResult)
         
     },
 
@@ -47,7 +45,6 @@ module.exports = {
         Student.findById(id, function (err, doc) {
 
             if (err) {
-                console.log(err)
                 return res.send({ success: false, error: err })
             }
             return res.send({ success: true, doc:doc })
@@ -61,7 +58,6 @@ module.exports = {
         Student.find({name:name}, function (err, doc) {
 
             if (err) {
-                console.log(err)
                 return res.send({ success: false, error: err })
             }
             return res.send({ success: true, doc:doc })
